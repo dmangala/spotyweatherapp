@@ -1,0 +1,91 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    /*background-color: #0ec12f;*/
+    background: rgb(238, 174, 202);
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    width: 20rem;
+    height: fit-content;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card h2 {
+    margin: 0;
+    margin-top: 1rem;
+    color: black;
+}
+
+.card p {
+    margin: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.card .btnn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card audio {
+    max-width: 100%;
+}
+
+
+/* CSS */
+
+.button {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0.7em 1.4em 0.7em 1.1em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(0deg, rgba(20, 167, 62, 1) 0%, rgba(102, 247, 113, 1) 100%);
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 0;
+}
+
+.button:hover {
+    box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+}
+
+.button:active {
+    box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}
+
+.iframe {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    padding: 0.5em;
+    color: white;
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-top: 35px !important;
+    margin-bottom: 35px !important;
+}
