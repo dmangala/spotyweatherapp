@@ -58,7 +58,7 @@ const Data = ({token}) => {
           //get Info
           axios.get(`https://ipinfo.io/${res.data.ip}?token=7fc56b008c92f1`
           ).then((res)=> {
-              setCity('Issy-les-Moulineaux');
+              setCity(res.data.ip);
           })
       })
     }
