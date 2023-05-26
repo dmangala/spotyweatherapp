@@ -46,3 +46,49 @@
         }
     }
 }
+
+
+.hero {
+    margin: 0;
+    width: 100%;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    left: 0;
+    background-position: center;
+    padding: 10rem 0 20rem 0;
+    h1 {
+        font-family: 'Carter One', cursive;
+        position: relative;
+        text-align: center;
+        font-size: 3rem;
+        span {
+            background: #fff;
+            padding: 9px;
+            display: inline-block;
+            color: #000;
+        }
+    }
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #000;
+        opacity: 0.5;
+        z-index: 0;
+    }
+    
+}
+.search {
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    position: relative;
+    font-family: 'Carter One';
+    font-size: large;
+}

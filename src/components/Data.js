@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import  axios   from 'axios';
 import Card from './Card';
-import Styles from '../index.css';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import Styles from './Header.module.scss';
 
 
 const Data = ({token}) => {
@@ -12,6 +14,7 @@ const Data = ({token}) => {
   const [city,setCity] = useState('');
   const [imgCity,setImgCity] = useState('');
   const [pictoDeg,setPictoDeg] = useState('');
+  const [visible,setVisible] = useState(false);
 
   /////////////////////////////
   useEffect( ()=> {
@@ -37,7 +40,7 @@ const Data = ({token}) => {
     const dataWeather = async () => {
       await axios.get(`http://api.weatherapi.com/v1/current.json?key=b9b7832c16ca4d9c915172725231005&q=${city}&aqi=no`,
       ).then((res) => {
-        //console.log(res);
+      //console.log(res);
         setTemperature(res.data.current.temp_c);
         setPictoDeg(res.data.current.condition.icon);
       }).then(()=> {
@@ -58,29 +61,50 @@ const Data = ({token}) => {
           //get Info
           axios.get(`https://ipinfo.io/${res.data.ip}?token=7fc56b008c92f1`
           ).then((res)=> {
-              setCity(res.data.ip);
+              setCity(res.data.city);
           })
-      })
+      }).then(() => {
+          dataWeather();
+      }).then(() =>{
+          dataSpotify().then(() => {
+             setLoading(true);
+          });
+       });
     }
 
    /********************/
    getUserLocation();
-   dataWeather();
-   dataSpotify().then(() => {
-    setLoading(true);
-   });
-  },[token,valueTemperature]);
+
+
+   const timer = setTimeout(() => setVisible(true), 3000);
+   return () => clearTimeout(timer);
+   
+  
+  },[token,valueTemperature,city]);
+
 
   return (
     <>
-      <div className="hero" style={{backgroundImage:`url(${imgCity})`}} > 
+      <div className={Styles.hero} style={{backgroundImage:`url(${imgCity})`}} > 
         <h2 className="flex justify-center"><span>{city}</span><span>| {valueTemperature}°</span><span><img src={pictoDeg} /></span></h2>
+        <h1 className='text-white text-lg'> <span>Spoty</span>Weather App</h1>
       </div>
-      
       { loading ? ( 
-       <div className='slick'> <Card data={dataFlux} token={token}/> </div>
+          visible ? ( 
+           <div className='slick' > <Card data={dataFlux} token={token}/> </div>
+          ): (
+        
+            <div className='slick ' > 
+              <div className={Styles.search} >Recherche de musiques compatible avec ce temps</div>
+              <Box sx={{ display: 'flex', justifyContent : "center" }}>
+              <CircularProgress />
+              </Box>
+            </div>
+          )
       ) : ( 
-        <div className='bg-red-50 h-100vh'>&nbsp;</div> 
+        <Box sx={{ display: 'flex' }}>
+          <CircularProgress />
+        </Box>
       )}
     </>
   );
