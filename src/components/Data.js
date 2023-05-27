@@ -38,7 +38,7 @@ const Data = ({token}) => {
     /*************************************/
     //Récupération de la méteo
     const dataWeather = async () => {
-      await axios.get(`http://api.weatherapi.com/v1/current.json?key=b9b7832c16ca4d9c915172725231005&q=${city}&aqi=no`,
+      await axios.get(`https://api.weatherapi.com/v1/current.json?key=b9b7832c16ca4d9c915172725231005&q=${city}&aqi=no`,
       ).then((res) => {
       //console.log(res);
         setTemperature(res.data.current.temp_c);
