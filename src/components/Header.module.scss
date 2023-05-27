@@ -48,6 +48,15 @@
     }
 }
 
+@media (max-width: 500px) { 
+    .header {
+        justify-content: center;
+        h1{
+            margin-bottom: 10px;
+        }
+    }
+ }
+
 
 .hero {
     margin: 0;
@@ -92,4 +101,10 @@
     position: relative;
     font-family: 'Carter One';
     font-size: large;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    img{
+        display: inline;
+    }
 }

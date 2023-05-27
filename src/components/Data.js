@@ -76,7 +76,7 @@ const Data = ({token}) => {
    getUserLocation();
 
 
-   const timer = setTimeout(() => setVisible(true), 3000);
+   const timer = setTimeout(() => setVisible(true), 5000);
    return () => clearTimeout(timer);
    
   
@@ -95,7 +95,7 @@ const Data = ({token}) => {
           ): (
         
             <div className='slick ' > 
-              <div className={Styles.search} >Recherche de musiques compatible avec ce temps</div>
+              <div className={Styles.search} ><span>Recherche de musiques</span> <span>pour ce temps </span><span><img src={pictoDeg} /></span> </div>
               <Box sx={{ display: 'flex', justifyContent : "center" }}>
               <CircularProgress />
               </Box>
