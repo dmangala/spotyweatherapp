@@ -95,7 +95,7 @@ const Data = ({token}) => {
           ): (
         
             <div className='slick ' > 
-              <div className={Styles.search} ><span>Recherche de musiques</span> <span>pour ce temps </span><span><img src={pictoDeg} /></span> </div>
+              <div className={Styles.search} ><span>Génère une playlist </span> <span>pour ce temps </span><span><img src={pictoDeg} /></span> </div>
               <Box sx={{ display: 'flex', justifyContent : "center" }}>
               <CircularProgress />
               </Box>
