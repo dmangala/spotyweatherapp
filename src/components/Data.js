@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import  axios   from 'axios';
-import Card from './Card';
+import Card from './Card/Card';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import Styles from './Header.module.scss';
+import Styles from './Header/Header.module.scss';
 
 
 const Data = ({token}) => {

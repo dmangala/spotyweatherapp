@@ -2,8 +2,8 @@ import Styles from "./Card.module.css";
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 import { v4 as uuidv4 } from "uuid";
-import Carousel from "./carousel/Carousel3d";
-import Player from "./Player";
+import Carousel from "../carousel/Carousel3d";
+import Player from "../Player/Player";
 
 
 

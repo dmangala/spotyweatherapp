@@ -1,6 +1,6 @@
 
 import Auth from './components/Auth';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 
 
 

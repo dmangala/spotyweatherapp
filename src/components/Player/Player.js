@@ -1,4 +1,4 @@
-import Styles from "./Card.module.css";
+import Styles from "../Card/Card.module.css";
 
 const Player = ({idAlbum}) => {
   const url='https://open.spotify.com/embed/album/'+idAlbum;
