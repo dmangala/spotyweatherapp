@@ -19,7 +19,10 @@
     "react-carousel3": "^1.0.0",
     "react-dom": "^18.2.0",
     "react-responsive-carousel": "^3.2.23",
+    "react-router": "^6.11.2",
+    "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "react-spotify-auth": "^1.4.3",
     "react-spring": "^9.7.1",
     "react-spring-3d-carousel": "^1.3.4",
     "sass": "^1.62.1",
@@ -52,8 +55,11 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
+    "express": "^4.18.2",
+    "js-cookie": "^3.0.5",
     "postcss": "^8.4.23",
     "postcss-import": "^15.1.0",
+    "react-spotify-api": "^3.0.0",
     "tailwindcss": "^3.3.2"
   }
 }
