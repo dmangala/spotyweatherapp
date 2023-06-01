@@ -16,12 +16,12 @@ function App() {
   return (
    <>
     <Header />
-    <div className="container mx-auto text-white">
+   
       <Routes>
         <Route path="/" element={<Auth />} />
         <Route path="callback" element={<Callback />} />
       </Routes>
-     </div>
+
      </>
   );
 }

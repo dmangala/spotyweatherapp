@@ -2,55 +2,64 @@ import { useEffect, useState } from 'react';
 import  axios   from 'axios';
 import qs from 'qs';
 import Data from './Data';
+import Cookies from 'js-cookie';
+import Dashboard from './Connected/Dashboard';
 
 
 const Auth = () => {
-
+  
+  const [cookie, setCoookie] = useState(Cookies.get("spotifyAuthToken"));
   const [token,setToken] = useState('');
-    useEffect( ()=> {
-       const getToken =  async () => {
-            const clientId = "0df22ed104cd49039349271803c92385";
-            const clientSecret = "83e2b26c5d664a719afdd8ba63fca9a1";
+
+  useEffect( ()=> {
+    const getToken =  async () => {
+      const clientId = "0df22ed104cd49039349271803c92385";
+      const clientSecret = "83e2b26c5d664a719afdd8ba63fca9a1";
+              
+      const headers = {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        auth: {
+          username: clientId,
+          password: clientSecret,
+        },
+      };
+      const data = {
+        grant_type: 'client_credentials',
+      };
             
-            const headers = {
-              headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/x-www-form-urlencoded',
-              },
-              auth: {
-                username: clientId,
-                password: clientSecret,
-              },
-            };
-            const data = {
-              grant_type: 'client_credentials',
-            };
-          
-            try {
-              const response = await axios.post(
-                'https://accounts.spotify.com/api/token',
-                qs.stringify(data),
-                headers
-              );
-             // console.log(response.data.access_token);
-              setToken(response.data.access_token);
-              return response.data.access_token;
-             
-            } catch (error) {
-             // console.log(error);
-            }
-          };
-          getToken();
-    },[]);
+      try {
+        const response = await axios.post(
+          'https://accounts.spotify.com/api/token',
+          qs.stringify(data),
+          headers
+        );
+        // console.log(response.data.access_token);
+        setToken(response.data.access_token);
+        return response.data.access_token;
+              
+      } catch (error) {
+              // console.log(error);
+      }
+    };
+    getToken();
+  },[]);
 
-
-    return (
-        <>
-          <Data token={token} />
-        </>
-    );
+  return (
+    <>
+      {
+        cookie ? (
+          <Dashboard />
+        ) : (
+          <div className="container mx-auto text-white">
+            <Data token={token} />
+          </div>
+        )
+      }
+    </>
+  );
 };
-
-
 
 export default Auth;

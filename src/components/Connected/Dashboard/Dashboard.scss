@@ -54,8 +54,20 @@ body {
   
 }
 
+select, #demo-simple-select-label{
+  color: #fff;
+}
+
 .header {
-  
+  h1 {
+    font-family: 'Carter One', cursive;
+    span {
+        background: #fff;
+        padding: 9px;
+        display: inline-block;
+        color: #000;
+    }
+    }
   & {
     background: $light-black;
     padding: $padding-sm;
@@ -69,7 +81,7 @@ body {
   
   .window__actions {}
   
-  .page-flows {
+  .pageflows {
     
     .flow {
       
@@ -111,6 +123,9 @@ body {
   
   .user {
     
+    > div{
+      border-color: #fff;
+    }
     & {
       width: 300px;
       margin-left: auto;
