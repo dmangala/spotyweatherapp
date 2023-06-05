@@ -5,16 +5,41 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 
 
 const Header = () => {
-  const [user, setUser] = useState('');
+  
+  const [select, setSelect] = useState('');
+  const [ user, setUser ] = useState(['']);
+  const token  = Cookies.get("spotifyAuthToken");
+
 
   const handleChange = (event) => {
-    setUser(event.target.value);
+    setSelect(event.target.value);
   };
+
+  useEffect(() => {
+    const getUser = async () => {
+      /*************************************/
+      /* User info */
+      await axios.get(`https://api.spotify.com/v1/me`,
+        {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer '+token
+          }
+        }
+      ).then((res) => {
+        setUser(res.data)
+      })
+    }
+    getUser();
+  },[]);
 
   return (
     <>
@@ -29,8 +54,7 @@ const Header = () => {
               <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/7022/adam_proPic.jpg" alt="Profile Picture" class="img-responsive" />
             </span>
             <span className="user__info__name">
-              <span className="first">Adam</span>
-              <span className="last">Lowenthal</span>
+              <span className="first">{user.display_name}</span>
             </span>
           </div>
           <div className="user__actions">
